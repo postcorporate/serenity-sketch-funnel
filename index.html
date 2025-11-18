@@ -1039,7 +1039,7 @@
               <p style="text-align: center;"><strong><span style="color: #463A2B;">Can't find it?</span></strong>&nbsp;Check your spam or junk folder.</p>
               <p style="text-align: center;"><strong><br></strong></p>
               <p style="text-align: center;"><strong><span style="color: #463A2B;">Next Step</span></strong>:&nbsp;You will be automatically&nbsp;redirected to the demo download.</p>
-              <p style="text-align: center;">If you're not automatically redirected, <span><a href="/download-demo.html">click here</a></span>.</p>
+              <p style="text-align: center;">If you're not automatically redirected, <span><a href="/download-demo.html" id="success-redirect-link">click here</a></span>.</p>
             </div>
           </div>
         </div>
@@ -1057,6 +1057,50 @@
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
   <script>
     fetch("https://assets.mailerlite.com/jsonp/1239190/forms/168317677532611861/takel")
+  </script>
+
+  <!-- Add UTMs to success message redirect link -->
+  <!-- this function comes from our google tag manager setup -->
+  <script>
+    (function() {
+      var linkUpdated = false;
+
+      function appendUtmsToLink() {
+        // Only update once to avoid unnecessary work
+        if (linkUpdated) return;
+
+        if (typeof window.ccUtm === 'undefined' || !window.ccUtm.getQueryString) {
+          // ccUtm utility not loaded yet
+          return;
+        }
+
+        var link = document.getElementById('success-redirect-link');
+        if (link) {
+          var utmQuery = window.ccUtm.getQueryString();
+          if (utmQuery) {
+            var currentHref = link.getAttribute('href');
+            // Only update if not already updated (avoid double-appending)
+            if (currentHref.indexOf('utm_') === -1) {
+              var separator = currentHref.indexOf('?') > -1 ? '&' : '?';
+              link.setAttribute('href', currentHref + separator + utmQuery);
+              linkUpdated = true;
+            }
+          }
+        }
+      }
+
+      // Try to append UTMs when page loads
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', appendUtmsToLink);
+      } else {
+        appendUtmsToLink();
+      }
+
+      // Retry at multiple intervals to catch slow GTM loads
+      setTimeout(appendUtmsToLink, 500);
+      setTimeout(appendUtmsToLink, 1000);
+      setTimeout(appendUtmsToLink, 2000);
+    })();
   </script>
 </body>
 </html>
