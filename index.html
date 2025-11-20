@@ -74,10 +74,7 @@
       }
 
       .logo {
-        width: 160px;
-        height: auto;
-        margin-bottom: 1rem;
-        filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+        display: none;
       }
 
       .eyebrow {
@@ -137,29 +134,69 @@
         background: rgba(0,0,0,0.2);
       }
 
+      .cta-scroll {
+        margin-top: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: var(--color-surface);
+        color: var(--color-text);
+        border: 1px solid rgba(70,58,43,0.2);
+        color: var(--color-text);
+        border: none;
+        border-radius: 999px;
+        font-weight: 700;
+        padding: 0.85rem 1.4rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+      }
+
+      .cta-scroll:hover {
+        background: #dcc39d;
+        border-color: rgba(70,58,43,0.35);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      }
+
+      .cta-scroll:active {
+        background: #c8aa82;
+        border-color: rgba(70,58,43,0.5);
+        transform: translateY(0);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      }
+
+      .cta-scroll:focus-visible {
+        outline: 2px solid rgba(255,255,255,0.8);
+        outline-offset: 4px;
+      }
+
       .stage {
-        background: #fff;
+        background: #2d2116;
         border-radius: var(--radius-card);
         padding: clamp(1.5rem, 4vw, 2.5rem);
         box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        color: #f7e8d4;
       }
 
       .stage h2 {
         margin-top: 0;
         margin-bottom: 0.75rem;
         font-size: clamp(1.6rem, 3vw, 2.2rem);
+        color: #fef5ea;
       }
 
       .stage-lede {
         margin: 0 0 1.5rem;
-        color: rgba(70,58,43,0.9);
+        color: rgba(247, 232, 212, 0.85);
         line-height: 1.5;
       }
 
       .form-card {
-        background: var(--color-surface);
+        background: rgba(70, 58, 43, 0.85);
         border-radius: var(--radius-card);
         padding: clamp(1rem, 3vw, 1.75rem);
+        border: 1px solid rgba(247, 232, 212, 0.2);
       }
 
       .ml-form-embedWrapper form {
@@ -173,16 +210,19 @@
         display: block;
         margin-bottom: 0.25rem;
         font-size: 0.85rem;
+        color: #fef5ea;
       }
 
       .ml-form-fieldRow input[type="email"],
       .ml-form-fieldRow input[type="text"] {
         width: 100%;
         border-radius: 8px;
-        border: 1px solid rgba(70,58,43,0.25);
+        border: 1px solid rgba(247,232,212,0.35);
         padding: 0.85rem 0.9rem;
         font-size: 1rem;
         font-family: inherit;
+        background: rgba(255,255,255,0.96);
+        color: #2d2116;
       }
 
       .device-grid {
@@ -198,22 +238,26 @@
         display: flex;
         align-items: center;
         gap: 0.45rem;
-        background: rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(247,232,212,0.3);
         border-radius: 999px;
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
+        color: #fef5ea;
       }
 
       .device-grid input {
         accent-color: var(--color-accent);
+        background-color: rgba(255,255,255,0.2);
       }
 
       .ml-form-interestGroupsRow {
-        border-top: 1px solid rgba(70,58,43,0.2);
+        border-top: 1px solid rgba(247,232,212,0.2);
         padding-top: 1rem;
         display: flex;
         gap: 0.75rem;
         flex-direction: column;
+        color: #fef5ea;
       }
 
       .ml-form-embedSubmit button.primary {
@@ -242,7 +286,7 @@
 
       .trust-copy {
         font-size: 0.85rem;
-        color: rgba(70,58,43,0.8);
+        color: rgba(247,232,212,0.75);
         margin: 0.75rem 0 0;
       }
 
@@ -293,7 +337,6 @@
       <header class="hero">
         <div class="hero-top">
           <div class="hero-content">
-            <img src="images/logo-grey.svg" alt="Serenity Sketch logo" class="logo" width="160" height="160" loading="lazy" onerror="this.onerror=null;this.src='images/logo-grey-fallback.webp';">
             <h1>Sign up to our newsletter, to receive a playable demo</h1>
           </div>
           <div class="hero-media">
@@ -305,19 +348,19 @@
         </div>
         <div class="hero-summary">
           <p>
-            Subscribe to our newsletter to unlock the latest demo,
-            influence upcoming features, and join private playtests.
+            What you'll get with the newsletter:
           </p>
           <ul class="benefits">
             <li><span>01</span>Demo link delivered to your inbox</li>
-            <li><span>02</span>Regular development notes & art drops</li>
+            <li><span>02</span>Development updates and art drops</li>
             <li><span>03</span>Invites to exclusive playtest sessions</li>
           </ul>
+          <button class="cta-scroll" data-action="scroll-to-form">Sign up</button>
         </div>
       </header>
 
       <section class="stage" aria-labelledby="landing-form-title">
-        <h2 id="landing-form-title">Step 1 · Tell us where to send the build</h2>
+        <h2 id="landing-form-title">Step 1 · Tell us where to send the demo</h2>
         <p class="stage-lede">
           Share your preferred platform and subscribe to the Serenity Sketch newsletter.
           We’ll email you the demo, dev diaries, and opportunities to influence tactile gameplay systems.
@@ -433,6 +476,18 @@
       document.querySelectorAll('[data-link="main-site"]').forEach((link) => {
         link.href = funnelConfig.links.mainSite;
       });
+
+      const scrollBtn = document.querySelector('[data-action="scroll-to-form"]');
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+          const formSection = document.getElementById('landing-form-title');
+          if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'cta_scroll_to_form' });
+          }
+        });
+      }
     </script>
 
     <script>
