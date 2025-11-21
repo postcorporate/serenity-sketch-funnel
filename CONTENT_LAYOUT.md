@@ -21,17 +21,14 @@ Single-page newsletter signup funnel optimized for mobile loading. Content loads
 **Purpose:** Capture email and platform preference with clear value exchange
 
 - **Heading:** "Step 1: Get the Demo & Exclusive Invites"
-- **Description:** "Enter your email below to receive the private playable demo link instantly. You'll also get:"
-  - **Bullet List:**
-    - First Access: Be the first to receive new demo updates.
-    - Community Invites: Join exclusive playtest sessions.
-    - The Vision: Receive behind-the-scenes insights on blending creativity and mindfulness.
+- **Description:** "Enter your email below to receive the private playable demo link instantly."
 - **Form Fields:**
-  - Email (required)
-  - Platform selection checkboxes (PC, iPad, iPhone, Android, Nintendo Switch)
+  - Email Address (Required)
+  - Platform selection checkboxes: "Tell us what you'd like to play on:" (PC, iPad, iPhone, Android, Nintendo Switch) - Optional
   - Hidden tracking fields (UTM params, click IDs)
 - **Privacy Policy:** Link to data privacy policy
-- **Subscription Checkbox:** Pre-checked, required for demo access
+- **Mandatory Legal Checkbox:** "I agree to the [Terms of Service & EULA] and acknowledge the [Privacy Policy]." - UNCHECKED by default, required
+- **Optional Marketing Checkbox:** "I would like to receive the Serenity Sketch newsletter with updates and future promotional offers." - UNCHECKED by default
 - **Submit Button:** "Email Me My Demo Link"
 - **Trust Copy:** "We hate spam. We only use your email to send the demo link and project updates. [Privacy Policy Link]"
 
