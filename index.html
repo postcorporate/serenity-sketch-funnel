@@ -100,29 +100,37 @@
 
       .benefits {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 0.5rem;
-        margin: 0;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0 1.5rem;
         padding: 0;
         list-style: none;
       }
 
+      @media (max-width: 768px) {
+        .benefits {
+          grid-template-columns: 1fr;
+        }
+      }
+
       .benefits li {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 0.5rem;
+        line-height: 1.6;
+        flex-wrap: wrap;
+      }
+
+      .benefits strong {
+        font-weight: 600;
+        margin-right: 0.25rem;
       }
 
       .benefits span {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.2);
-        color: #fff;
-        font-size: 0.85rem;
+        display: inline-block;
+        font-size: 1.1rem;
+        line-height: 1;
+        margin-right: 0.5rem;
       }
 
       .hero-media img {
@@ -441,6 +449,21 @@
           font-size: 1.8rem;
           line-height: 1.1;
         }
+        .benefits {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .benefits li {
+          flex-direction: row;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .benefits strong {
+          flex: 0 0 auto;
+        }
+        .benefits span {
+          margin-right: 0.5rem;
+        }
       }
     </style>
   </head>
@@ -465,8 +488,13 @@
         </div>
         <div class="hero-summary">
           <p>
-            The guided creative experience that blends the focus of meditation with the joy of art. Start your journey to inner quiet today.
+            The guided creative experience that blends the <u>joy of art</u> with <u>calm of mindfulness</u>. Start your journey to inner quiet today.
           </p>
+          <ul class="benefits">
+            <li><strong>Let Go with Water Painting</strong> <span>🖌️</span> No mistakes, just focus</li>
+            <li><strong>Be Guided Along the Path</strong> <span>🫴🏼</span> Gentle prompts, no pressure</li>
+            <li><strong>Explore Inviting Settings</strong> <span>🌳</span> Natural, calming soundscapes</li>
+          </ul>
           <div class="cta-buttons">
             <button class="cta-scroll" data-action="scroll-to-form">Get the Private Demo Link</button>
           </div>
@@ -581,8 +609,6 @@
           <p>
             A Guided Path to Inner Quiet. Serenity Sketch is a digital experience you can play on your phone, tablet, or PC—designed for those who seek the quiet focus of meditation but are drawn to the process of creation.
           </p>
-
-          <h3>The Hybrid Experience: Mindfulness Meets Art</h3>
 
           <h4>Let Go with Water Painting</h4>
           <p>
