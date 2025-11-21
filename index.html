@@ -152,6 +152,32 @@
         transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
       }
 
+      .cta-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .cta-buttons .cta-scroll {
+        margin-top: 0;
+      }
+
+      .cta-scroll.secondary {
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.3);
+      }
+
+      .cta-scroll.secondary:hover {
+        background: rgba(255,255,255,0.25);
+        border-color: rgba(255,255,255,0.4);
+      }
+
+      .cta-scroll.secondary:active {
+        background: rgba(255,255,255,0.2);
+      }
+
       .cta-scroll:hover {
         background: #dcc39d;
         border-color: rgba(70,58,43,0.35);
@@ -222,7 +248,7 @@
         font-size: 1rem;
         font-family: inherit;
         background: rgba(255,255,255,0.96);
-        color: #2d2116;
+        color: #2d1617;
       }
 
       .device-grid {
@@ -316,6 +342,97 @@
         to { transform: rotate(360deg); }
       }
 
+      /* Lazy-loaded content styles */
+      .lazy-content {
+        min-height: 200px;
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+      }
+
+      .lazy-content.loaded {
+        opacity: 1;
+      }
+
+      .lazy-content-placeholder {
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255,255,255,0.5);
+        font-size: 0.9rem;
+      }
+
+      .lazy-content-placeholder.loading {
+        color: rgba(255,255,255,0.7);
+      }
+
+      .lazy-content-placeholder::before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 3px solid rgba(255,255,255,0.2);
+        border-top-color: rgba(255,255,255,0.6);
+        animation: spin 0.8s linear infinite;
+        margin-right: 0.75rem;
+      }
+
+      .lazy-content-placeholder.loaded::before {
+        display: none;
+      }
+
+      .educational-section {
+        margin-top: clamp(2rem, 5vw, 4rem);
+      }
+
+      .educational-section h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        color: #fef5ea;
+      }
+
+      .educational-section p {
+        margin: 0 0 1rem;
+        line-height: 1.6;
+        color: rgba(247, 232, 212, 0.9);
+      }
+
+      .educational-section img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius-card);
+        margin: 1.5rem 0;
+        border: 2px solid rgba(255,255,255,0.12);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      }
+
+      .educational-section h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+        color: #fef5ea;
+      }
+
+      .educational-section h4 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        color: #fef5ea;
+        font-weight: 600;
+      }
+
+      .educational-section ul {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+        color: rgba(247, 232, 212, 0.9);
+        line-height: 1.8;
+      }
+
+      .educational-section li {
+        margin-bottom: 0.5rem;
+      }
+
       @media (max-width: 640px) {
         .logo {
           width: 110px;
@@ -355,7 +472,10 @@
             <li><span>02</span>Development updates and art drops</li>
             <li><span>03</span>Invites to exclusive playtest sessions</li>
           </ul>
-          <button class="cta-scroll" data-action="scroll-to-form">Sign up</button>
+          <div class="cta-buttons">
+            <button class="cta-scroll" data-action="scroll-to-form">Sign up</button>
+            <button class="cta-scroll secondary" data-action="scroll-to-about">Learn More</button>
+          </div>
         </div>
       </header>
 
@@ -453,6 +573,69 @@
         </div>
       </section>
 
+      <!-- Lazy-loaded educational content section -->
+      <section class="stage educational-section lazy-content" id="educational-content" aria-labelledby="educational-title">
+        <div class="lazy-content-placeholder" id="lazy-placeholder">
+          Loading content...
+        </div>
+        <div id="lazy-content-inner" style="display: none;">
+          <h2 id="educational-title">About Serenity Sketch</h2>
+          <p>
+            Serenity Sketch is a digital experience—a game or app—available on PC, smartphone, or tablet. 
+            This guided painting journey uses gentle prompts and soothing nature landscapes to help you feel more grounded. 
+            Learn to reconnect with your creativity and inner quiet by letting go.
+          </p>
+
+          <picture>
+            <source srcset="images/about1-1200x800.webp 1200w, images/about1-800x600.webp 800w, images/about1-600x400.webp 600w" type="image/webp">
+            <img src="images/about1-1200x800.webp" alt="Serenity Sketch - painting with water" width="1200" height="800" loading="lazy">
+          </picture>
+
+          <h3>You're Not the First to Walk This Path</h3>
+
+          <h4>Painting with Water—Simple, Timeless</h4>
+          <p>
+            Serenity Sketch follows the ancient practice of evaporating water painting. Paint water upon a stone. Breathe. Relax. 
+            Let go of your painting as it disappears. You're invited to explore your creativity by embracing impermanence.
+          </p>
+
+          <picture>
+            <source srcset="images/about2-1200x800.webp 1200w, images/about2-800x600.webp 800w, images/about2-600x400.webp 600w" type="image/webp">
+            <img src="images/about2-1200x800.webp" alt="Serenity Sketch - guided painting prompts" width="1200" height="800" loading="lazy">
+          </picture>
+
+          <h4>Be Guided Along the Path of Letting Go</h4>
+          <p>
+            Each day, take a step along this path with a unique painting prompt delivered by a gentle guiding voice. 
+            Prompts are designed to help you slow down and reconnect with yourself, concluding with self-reflection questions. 
+            This journey may unlock new pools of creativity and acceptance in your daily life.
+          </p>
+
+          <h4>Explore Natural, Inviting Settings</h4>
+          <p>
+            Each session transports you to a unique natural setting:
+          </p>
+          <ul>
+            <li>An ancient forest</li>
+            <li>A serene ocean bay</li>
+            <li>Mysterious cliffs along the shore</li>
+            <li>A lively wood</li>
+          </ul>
+          <p>
+            Calming soundscapes usher you into the present moment, allowing your painting to flow freely.
+          </p>
+
+          <picture>
+            <source srcset="images/about3-1200x800.webp 1200w, images/about3-800x600.webp 800w, images/about3-600x400.webp 600w" type="image/webp">
+            <img src="images/about3-1200x800.webp" alt="Serenity Sketch - natural environments" width="1200" height="800" loading="lazy">
+          </picture>
+
+          <div style="margin-top: 2rem; text-align: center;">
+            <button class="cta-scroll" data-action="scroll-to-form">Sign Up</button>
+          </div>
+        </div>
+      </section>
+
       <footer>
         Built for fast loading on GitHub Pages · <a href="#" data-link="main-site">See the full site</a>
       </footer>
@@ -477,9 +660,9 @@
         link.href = funnelConfig.links.mainSite;
       });
 
-      const scrollBtn = document.querySelector('[data-action="scroll-to-form"]');
-      if (scrollBtn) {
-        scrollBtn.addEventListener('click', () => {
+      // Handle scroll to form buttons
+      document.querySelectorAll('[data-action="scroll-to-form"]').forEach((btn) => {
+        btn.addEventListener('click', () => {
           const formSection = document.getElementById('landing-form-title');
           if (formSection) {
             formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -487,7 +670,99 @@
             window.dataLayer.push({ event: 'cta_scroll_to_form' });
           }
         });
-      }
+      });
+
+      // Handle scroll to about section
+      document.querySelectorAll('[data-action="scroll-to-about"]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const aboutSection = document.getElementById('educational-content');
+          if (aboutSection) {
+            // Ensure content is loaded before scrolling
+            const lazyContentInner = document.getElementById('lazy-content-inner');
+            if (lazyContentInner && lazyContentInner.style.display === 'none') {
+              // Trigger content load if not already loaded
+              if (window.loadEducationalContent) {
+                window.loadEducationalContent();
+              }
+            }
+            aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'cta_scroll_to_about' });
+          }
+        });
+      });
+
+      // Lazy load below-the-fold content
+      (function() {
+        const lazyContent = document.getElementById('educational-content');
+        const placeholder = document.getElementById('lazy-placeholder');
+        const contentInner = document.getElementById('lazy-content-inner');
+        
+        if (!lazyContent || !placeholder || !contentInner) return;
+
+        let contentLoaded = false;
+
+        function loadLazyContent() {
+          if (contentLoaded) return;
+          contentLoaded = true;
+
+          // Add loading state
+          placeholder.classList.add('loading');
+          
+          // Use requestIdleCallback for better performance, fallback to setTimeout
+          const loadContent = () => {
+            // Hide placeholder and show content
+            placeholder.style.display = 'none';
+            contentInner.style.display = 'block';
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+              lazyContent.classList.add('loaded');
+            }, 50);
+
+            // Track analytics if needed
+            if (window.dataLayer) {
+              window.dataLayer.push({ event: 'educational_content_loaded' });
+            }
+          };
+
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadContent, { timeout: 2000 });
+          } else {
+            setTimeout(loadContent, 100);
+          }
+        }
+
+        // Expose function for manual triggering (e.g., from Learn More button)
+        window.loadEducationalContent = loadLazyContent;
+        
+        // Listen for manual trigger (e.g., from Learn More button)
+        window.addEventListener('loadLazyContent', loadLazyContent);
+
+        // Use IntersectionObserver to load content when user scrolls near it
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                loadLazyContent();
+                observer.disconnect();
+              }
+            });
+          }, { 
+            rootMargin: '300px 0px' // Start loading 300px before it comes into view
+          });
+
+          observer.observe(lazyContent);
+        } else {
+          // Fallback for older browsers - load after a delay
+          window.addEventListener('scroll', () => {
+            const rect = lazyContent.getBoundingClientRect();
+            if (rect.top < window.innerHeight + 300) {
+              loadLazyContent();
+            }
+          }, { once: true });
+        }
+      })();
     </script>
 
     <script>
