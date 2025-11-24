@@ -52,6 +52,21 @@
         justify-content: center;
       }
 
+      a {
+        color: #ffd59c;
+        text-decoration: underline;
+        text-decoration-color: rgba(255,213,156,0.7);
+      }
+
+      a:visited {
+        color: #ffb36b;
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: #fff0d7;
+      }
+
       .page {
         width: 100%;
         max-width: var(--max-width);
@@ -330,13 +345,15 @@
 
       .legal-checkbox-label a,
       .marketing-checkbox-label a {
-        color: #fef5ea;
+        color: #ffd59c;
         text-decoration: underline;
       }
 
       .legal-checkbox-label a:hover,
-      .marketing-checkbox-label a:hover {
-        color: #fff;
+      .marketing-checkbox-label a:hover,
+      .legal-checkbox-label a:focus-visible,
+      .marketing-checkbox-label a:focus-visible {
+        color: #fff0d7;
       }
 
       .ml-form-embedSubmit button.primary {
@@ -363,6 +380,13 @@
         box-shadow: 0 8px 18px rgba(178,106,67,0.4);
       }
 
+      .submit-disclaimer {
+        margin-top: 0.75rem;
+        font-size: 0.8rem;
+        color: rgba(247,232,212,0.8);
+        text-align: center;
+      }
+
       .trust-copy {
         font-size: 0.85rem;
         color: rgba(247,232,212,0.75);
@@ -377,7 +401,7 @@
       }
 
       footer a {
-        color: rgba(255,255,255,0.9);
+        color: #ffd59c;
         text-decoration: underline;
       }
 
@@ -605,8 +629,15 @@
       <section class="stage" aria-labelledby="landing-form-title">
         <h2 id="landing-form-title">Enter Your Email to Get Access</h2>
         <p class="stage-lede">
-          Enter your email below to get the private playable demo link instantly. Your email is only used to send this link and essential service updates.
+          Enter your email below to get the private playable demo link instantly.
         </p>
+        <p class="stage-lede">
+          Also indicate which device(s) you'd like to play on.
+        </p>
+        <!-- <p class="trust-copy">
+          We hate spam. We only use your email to send the demo link and project updates.
+          <a href="https://www.coppercoin.nl/data-privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+        </p> -->
 
         <div class="form-card">
           <div id="mlb2-32107971" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-32107971">
@@ -620,7 +651,7 @@
                         <input id="ml-email" type="email" name="fields[email]" placeholder="name@email.com" required autocomplete="email">
                       </div>
                       <div class="ml-form-fieldRow">
-                        <label>Tell us what you'd like to play on:</label>
+                        <label>Preferred device(s):</label>
                         <div class="device-grid">
                           <label><input type="checkbox" name="fields[device][]" value="PC">PC</label>
                           <label><input type="checkbox" name="fields[device][]" value="iPad">iPad</label>
@@ -653,26 +684,20 @@
                       </div>
                     </div>
 
-                    <div class="ml-form-embedPermissions">
+                    <!-- <div class="ml-form-embedPermissions">
                       <div class="ml-form-embedPermissionsContent privacy-policy">
                         <p>
                           We respect your inbox. Review our
                           <a href="https://www.coppercoin.nl/data-privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
                         </p>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="ml-form-legalCheckboxes">
                       <div class="ml-form-fieldRow">
-                        <label class="legal-checkbox-label">
-                          <input type="checkbox" name="legal_consent" value="agreed" required>
-                          <span>[Required] I agree to the <a href="https://www.coppercoin.nl/terms-of-service-eula" target="_blank" rel="noopener">Terms of Service & EULA</a> and acknowledge the <a href="https://www.coppercoin.nl/data-privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-                        </label>
-                      </div>
-                      <div class="ml-form-fieldRow">
                         <label class="marketing-checkbox-label">
                           <input type="checkbox" name="groups[]" value="141069043096356340">
-                          <span>I would like to receive the Serenity Sketch newsletter with updates and future promotional offers.</span>
+                          <span>Yes, sign me up for the Serenity Sketch newsletter. We'll send you occasional emails with development updates, promotional offers, and more to keep you in the loop.</span>
                         </label>
                         <input type="hidden" name="groups[]" value="168259315507922211">
                       </div>
@@ -683,6 +708,12 @@
 
                     <div class="ml-form-embedSubmit">
                       <button type="submit" class="primary">Email Me My Demo Link</button>
+                      <p class="submit-disclaimer">
+                        By clicking "Email Me My Demo Link", you agree to the
+                        <a href="https://www.coppercoin.nl/terms-of-service" target="_blank" rel="noopener">Terms of Service &amp; EULA</a>
+                        and acknowledge the
+                        <a href="https://www.coppercoin.nl/data-privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+                      </p>
                     </div>
                   </form>
                 </div>
@@ -696,10 +727,6 @@
               </div>
             </div>
           </div>
-          <p class="trust-copy">
-            We hate spam. We only use your email to send the demo link and project updates. 
-            <a href="https://www.coppercoin.nl/data-privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
-          </p>
         </div>
       </section>
 
