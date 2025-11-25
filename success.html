@@ -93,7 +93,18 @@
     </div>
 
     <script type="module">
-      import { funnelConfig } from './config.js';
+      const funnelConfig = {
+        colors: {
+          background: '#463A2B',
+          surface: '#ECD3B2',
+          accent: '#B26A43',
+          textPrimary: '#463A2B',
+          buttonText: '#ffffff'
+        },
+        links: {
+          mainSite: 'https://www.coppercoin.nl/serenity-sketch'
+        }
+      };
       const root = document.documentElement.style;
       root.setProperty('--color-bg', funnelConfig.colors.background);
       root.setProperty('--color-surface', funnelConfig.colors.surface);

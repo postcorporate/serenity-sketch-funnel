@@ -21,7 +21,15 @@
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://groot.mailerlite.com">
     <link rel="preconnect" href="https://assets.mailerlite.com">
+    <link rel="preconnect" href="https://go.serenitysketch.com">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Open+Sans:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="images/hero1-logo-1200x670.webp"
+      imagesrcset="images/hero1-logo-1200x670.webp 1200w, images/hero1-logo-800x450.webp 800w, images/hero1-logo-600x338.webp 600w"
+      imagesizes="(min-width: 960px) 540px, (min-width: 640px) 60vw, 92vw">
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Open+Sans:wght@400;700&display=swap">
     </noscript>
@@ -148,9 +156,15 @@
         margin-right: 0.5rem;
       }
 
+      .hero-media picture {
+        display: block;
+      }
+
       .hero-media img {
+        display: block;
         width: 100%;
         height: auto;
+        aspect-ratio: 12 / 7;
         border-radius: var(--radius-card);
         border: 2px solid rgba(255,255,255,0.12);
         box-shadow: 0 12px 30px rgba(0,0,0,0.35);
@@ -551,7 +565,14 @@
           <div class="hero-media">
             <picture>
               <source srcset="images/hero1-logo-1200x670.webp 1200w, images/hero1-logo-800x450.webp 800w, images/hero1-logo-600x338.webp 600w" type="image/webp">
-              <img src="images/hero1-logo-1200x670.webp" alt="Serenity Sketch gameplay preview" width="540" height="320" loading="lazy">
+              <img
+                src="images/hero1-logo-1200x670.webp"
+                alt="Serenity Sketch gameplay preview"
+                width="1200"
+                height="670"
+                decoding="async"
+                fetchpriority="high"
+                sizes="(min-width: 960px) 540px, (min-width: 640px) 60vw, 92vw">
             </picture>
           </div>
         </div>
@@ -740,7 +761,28 @@
     </div>
 
     <script type="module">
-      import { funnelConfig } from './config.js';
+      const funnelConfig = {
+        mailerLite: {
+          embedId: 'mlb2-33669179',
+          formId: '33669179'
+        },
+        colors: {
+          background: '#463A2B',
+          surface: '#ECD3B2',
+          accent: '#B26A43',
+          textPrimary: '#463A2B',
+          textSecondary: '#000000',
+          buttonText: '#ffffff'
+        },
+        typography: {
+          heading: "'Noto Sans', sans-serif",
+          body: "'Open Sans', 'Noto Sans', system-ui, -apple-system, sans-serif"
+        },
+        links: {
+          mainSite: 'https://www.coppercoin.nl/serenity-sketch',
+          githubRepo: 'https://postcorporate.github.io/serenity-sketch-funnel'
+        }
+      };
 
       const docStyle = document.documentElement.style;
       const colorVars = {
