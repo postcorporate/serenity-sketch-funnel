@@ -1,8 +1,8 @@
 // Central configuration for Serenity Sketch funnel pages
 export const funnelConfig = {
   mailerLite: {
-    embedId: 'mlb2-32107971', // correct embed id
-    formId: '32107971' // correct form id
+    embedId: 'mlb2-33669179', // correct embed id
+    formId: '33669179' // correct form id (the other form is 32107971)
   },
   colors: {
     background: '#463A2B',
