@@ -938,13 +938,16 @@
     </script>
 
     <script>
+      // --- MailerLite Success Callback ---
       function ml_webform_success_32107971() {
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'newsletter_success' });
+
         const params = window.location.search || '';
         window.location.assign('success.html' + params);
       }
 
+      // --- MailerLite Asset Loader ---
       (function() {
         const formContainer = document.getElementById('mlb2-32107971');
         if (!formContainer) return;
@@ -959,27 +962,17 @@
           script.src = 'https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024';
           script.async = true;
           script.onload = function() {
+            // Trigger MailerLite JSONP call for tracking
             fetch('https://assets.mailerlite.com/jsonp/1239190/forms/168317677532611861/takel');
           };
           document.head.appendChild(script);
         }
 
-        if ('IntersectionObserver' in window) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                loadMailerLiteAssets();
-                observer.disconnect();
-              }
-            });
-          }, { rootMargin: '200px 0px' });
-
-          observer.observe(formContainer);
-        } else {
-          window.addEventListener('DOMContentLoaded', loadMailerLiteAssets);
-        }
+        // Directly load assets immediately; no IntersectionObserver / lazy load
+        loadMailerLiteAssets();
       })();
     </script>
+
   </body>
 </html>
 
