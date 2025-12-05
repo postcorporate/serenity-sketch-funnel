@@ -981,11 +981,6 @@
             setTimeout(() => {
               lazyContent.classList.add('loaded');
             }, 50);
-
-            // Track analytics if needed
-            if (window.dataLayer) {
-              window.dataLayer.push({ event: 'educational_content_loaded' });
-            }
           };
 
           if ('requestIdleCallback' in window) {
@@ -1030,8 +1025,6 @@
     <script>
       // --- MailerLite Success Callback ---
       function ml_webform_success_32107971() {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'newsletter_success' });
 
         // Show overlay instead of redirecting
         const modalOverlay = document.getElementById('ml-success-modal-overlay');
