@@ -562,6 +562,85 @@
           margin-right: 0.5rem;
         }
       }
+
+      /* Success overlay modal styles */
+      #ml-success-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10000;
+        display: none;
+        overflow-y: auto;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #ml-success-modal-overlay.show {
+        display: flex;
+      }
+
+      #ml-success-modal-content {
+        background: var(--color-surface);
+        padding: clamp(1.75rem, 4vw, 3rem);
+        margin: 50px auto;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+        color: var(--color-text);
+        text-align: center;
+        position: relative;
+      }
+
+      #ml-success-modal-content h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        color: var(--color-text);
+      }
+
+      #ml-success-modal-content p {
+        margin: 0 0 1rem;
+        line-height: 1.6;
+        color: var(--color-text);
+      }
+
+      #ml-success-modal-content .secondary {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: rgba(70,58,43,0.85);
+      }
+
+      #close-success-modal-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        line-height: 1;
+        color: var(--color-text);
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 120ms ease;
+      }
+
+      #close-success-modal-button:hover {
+        background: rgba(70,58,43,0.1);
+      }
+
+      #close-success-modal-button:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
     </style>
   </head>
   <body>
@@ -792,6 +871,17 @@
       </footer>
     </div>
 
+    <!-- Success Modal Overlay -->
+    <div id="ml-success-modal-overlay">
+      <div id="ml-success-modal-content">
+        <button id="close-success-modal-button" aria-label="Close modal">&times;</button>
+        <h1>🎉 Step 2: Check Your Inbox!</h1>
+        <p>We've just sent the Serenity Sketch demo link to the email address you provided. If you opted in, you will also receive the Serenity Sketch newsletter.</p>
+        <p>Didn't see it? Check your spam folder!</p>
+        <p class="secondary">You will be redirected to the Download page momentarily.</p>
+      </div>
+    </div>
+
     <script type="module">
       const funnelConfig = {
         mailerLite: {
@@ -943,9 +1033,45 @@
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'newsletter_success' });
 
-        const params = window.location.search || '';
-        window.location.assign('success.html' + params);
+        // Show overlay instead of redirecting
+        const modalOverlay = document.getElementById('ml-success-modal-overlay');
+        if (modalOverlay) {
+          modalOverlay.classList.add('show');
+          // Disable main page scrolling while modal is open
+          document.body.style.overflow = 'hidden';
+        }
       }
+
+      // Handle closing the success modal
+      (function() {
+        const modalOverlay = document.getElementById('ml-success-modal-overlay');
+        const closeButton = document.getElementById('close-success-modal-button');
+        
+        if (!modalOverlay || !closeButton) return;
+
+        function closeModal() {
+          modalOverlay.classList.remove('show');
+          // Re-enable main page scrolling
+          document.body.style.overflow = '';
+        }
+
+        closeButton.addEventListener('click', closeModal);
+
+        // Allow clicking the dark background to close the modal
+        modalOverlay.addEventListener('click', function(e) {
+          // If the click occurred directly on the overlay, close it
+          if (e.target === modalOverlay) {
+            closeModal();
+          }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
+            closeModal();
+          }
+        });
+      })();
 
       // --- MailerLite Asset Loader ---
       (function() {
